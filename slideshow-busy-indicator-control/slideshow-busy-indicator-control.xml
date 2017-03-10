@@ -1,0 +1,10 @@
+<!--<GridLayout [rowSpan]="rowSpan" visibility="{{ isBusy ? 'visible' : 'collapsed' }}" class="main-container">
+    <GridLayout class="background-layer"></GridLayout>
+    <GridLayout class="images-container" width="80" height="80">
+        <ImageTransitionControl [content]="signal" [images]="images" width="40" height="40"></ImageTransitionControl>
+    </GridLayout>
+</GridLayout>-->
+
+<GridLayout>
+    <Label text="Lorem ipsum..." ></Label>
+</GridLayout>

@@ -1,6 +1,8 @@
 import { Observable } from 'data/observable';
 import * as app from 'application';
 import * as dialogs from 'ui/dialogs';
+var builder = require("ui/builder");
+
 
 export class Common extends Observable {
   public message: string;
@@ -17,6 +19,12 @@ export class Common extends Observable {
 
 export class Utils {
   public static SUCCESS_MSG(): string {
+
+    var myComponentInstance = builder.load({
+      path: "~/slideshow-busy-indicator",
+      name: "SlideshowBusyIndicator"
+    });
+
     let msg = `Your plugin is working on ${app.android ? 'Android' : 'iOS'}.`;
 
     setTimeout(() => {
