@@ -1,5 +1,5 @@
-import {Observable} from 'data/observable';
-import {SlideshowBusyIndicator} from 'nativescript-slideshow-busy-indicator';
+import { Observable } from 'data/observable';
+import { SlideshowBusyIndicator } from 'nativescript-slideshow-busy-indicator';
 
 export class HelloWorldModel extends Observable {
   public message: string;
@@ -10,5 +10,7 @@ export class HelloWorldModel extends Observable {
 
     this.slideshowBusyIndicator = new SlideshowBusyIndicator();
     this.message = this.slideshowBusyIndicator.message;
+
+
   }
 }
