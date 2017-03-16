@@ -4,6 +4,7 @@
 
   <StackLayout id="root"  class="p-20">
     <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
-    <indicator:BusyIndicator></indicator:BusyIndicator>
+    <indicator:BusyIndicator lblText="{{message}}"></indicator:BusyIndicator>
+    
   </StackLayout> 
 </Page>

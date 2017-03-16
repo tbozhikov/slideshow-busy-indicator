@@ -1,0 +1,4 @@
+<StackLayout>
+    <Label text="this is a text shown from XML in the plugin"/>
+    <Label text="{{ lblText }}"/>
+</StackLayout>

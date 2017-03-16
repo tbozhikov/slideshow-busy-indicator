@@ -39,7 +39,7 @@ export class Utils {
 import { View, AddArrayFromBuilder } from "ui/core/view";
 import { PropertyMetadata } from "ui/core/proxy";
 import { Property, PropertyChangeData, PropertyMetadataSettings } from "ui/core/dependency-observable";
-import { StackLayout } from "ui/layouts/stack-layout";
+import { GridLayout } from "ui/layouts/grid-layout";
 import { isAndroid } from "platform";
 
 export module knownCollections {
@@ -48,47 +48,26 @@ export module knownCollections {
 let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
 
 const itemsProperty = new Property("items", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout));
+const lblTextProperty = new Property("lblText", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout));
 
 
-export class SlideshowBusyIndicatorControl extends StackLayout implements AddArrayFromBuilder {
-  private _selectedIndexes;
-  private _allowMultiple: boolean;
-  private _separatorColor: string;
-  private _headerHeight: number;
-  private _headerTextColor: string;
-  private _headerColor: string;
-  private _headerTextVerticalAlignment: string;
-  private _headerTextHorizontalAlignment: string;
-  private _headerTextSize: number;
-  public static itemsProperty = itemsProperty;
-  // public static selectedIndexProperty = selectedIndexProperty;
+export class SlideshowBusyIndicatorControl extends GridLayout {
+  public static lblTextProperty = lblTextProperty;
 
-  public _addArrayFromBuilder(name: string, value: Array<any>) {
-    if (name === "items") {
-      this.items = value;
-    }
+  get lblText() {
+    return this._getValue(SlideshowBusyIndicatorControl.lblTextProperty);
   }
 
-  get items() {
-    return this._getValue(SlideshowBusyIndicatorControl.itemsProperty);
-  }
-
-  set items(value: Array<any>) {
-    this._setValue(SlideshowBusyIndicatorControl.itemsProperty, value);
+  set lblText(value: string) {
+    this._setValue(SlideshowBusyIndicatorControl.lblTextProperty, value);
   }
 
   constructor() {
     super();
-
-    var lbl = new LabelModule.Label();
-    lbl.text = "This is a text label inside the plugin";
-    this.addChild(lbl);
-
-    const uiFromXml = builder.load({
-      path: '',
-      name: 'testComponent'
-    });
-
+    
+    const uiFromXml = builder.load(__dirname + "/ui/" + 'test-component.xml');
+    uiFromXml.bindingContext = this;
+    
     this.addChild(uiFromXml);
   }
 }
