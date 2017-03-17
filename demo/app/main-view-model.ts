@@ -5,6 +5,7 @@ export class HelloWorldModel extends Observable {
   public message: string;
   public isBusy: boolean;
   private slideshowBusyIndicator: SlideshowBusyIndicator;
+  public images = ["~/images/01.png", "~/images/02.png", "~/images/03.png", "~/images/04.png"];
 
   constructor() {
     super();
@@ -13,7 +14,7 @@ export class HelloWorldModel extends Observable {
     this.message = this.slideshowBusyIndicator.message;
     this.isBusy = true;
 
-    setInterval(() => this.onTimeout(), 1500);
+    //setInterval(() => this.onTimeout(), 1500);
   }
 
   onTimeout() {

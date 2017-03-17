@@ -1,4 +1,17 @@
-<StackLayout visibility="{{ isBusy ? 'visible' : 'collapsed' }}">
+<!--<StackLayout >
     <Label text="this is a text shown from XML in the plugin"/>
     <Label text="{{ lblText }}" />
-</StackLayout>
+</StackLayout>-->
+<GridLayout visibility="{{ isBusy ? 'visible' : 'collapsed' }}">
+    <Label text="{{ lblText }}" />
+    <!--<GridLayout class="background-layer"></GridLayout>-->
+    <GridLayout width="80" height="80">
+        <GridLayout width="40" height="40">
+            <!--<Image [@image1State]="stateSwitch ? 'active' : 'inactive'" [@rotateStates]="stateSwitch" src="{{imgSource1}}"></Image>
+            <Image [@image2State]="!stateSwitch ? 'active' : 'inactive'" [@rotateStates]="!stateSwitch" src="{{imgSource2}}"></Image>-->
+            <Image src="{{imgSource1}}"></Image>
+            <Image src="{{imgSource2}}"></Image>
+        </GridLayout>
+        <!--<ImageTransitionControl [content]="signal" [images]="images" width="40" height="40"></ImageTransitionControl>-->
+    </GridLayout>
+</GridLayout>

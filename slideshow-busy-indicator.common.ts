@@ -20,11 +20,6 @@ export class Common extends Observable {
 export class Utils {
   public static SUCCESS_MSG(): string {
 
-    // var myComponentInstance = builder.load({
-    //   path: "~/slideshow-busy-indicator",
-    //   name: "SlideshowBusyIndicator"
-    // });
-
     let msg = `Your plugin is working on ${app.android ? 'Android' : 'iOS'}.`;
 
     setTimeout(() => {
@@ -34,44 +29,3 @@ export class Utils {
     return msg;
   }
 }
-
-// import { View } from "ui/core/view";
-// import { PropertyMetadata } from "ui/core/proxy";
-// import { Property, PropertyChangeData, PropertyMetadataSettings } from "ui/core/dependency-observable";
-// import { GridLayout } from "ui/layouts/grid-layout";
-// import { isAndroid } from "platform";
-
-// let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
-
-// const lblTextProperty = new Property("lblText", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout));
-// const isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout));
-
-// export class SlideshowBusyIndicatorControl extends GridLayout {
-//   public static lblTextProperty = lblTextProperty;
-//   public static isBusyProperty = isBusyProperty;
-  
-//   get lblText() {
-//     return this._getValue(SlideshowBusyIndicatorControl.lblTextProperty);
-//   }
-
-//   set lblText(value: string) {
-//     this._setValue(SlideshowBusyIndicatorControl.lblTextProperty, value);
-//   }
-
-//   get isBusy() {
-//     return this._getValue(SlideshowBusyIndicatorControl.isBusyProperty);
-//   }
-
-//   set isBusy(value: boolean) {
-//     this._setValue(SlideshowBusyIndicatorControl.isBusyProperty, value);
-//   }
-
-//   constructor() {
-//     super();
-    
-//     const uiFromXml = builder.load(__dirname + "/ui/" + 'test-component.xml');
-//     uiFromXml.bindingContext = this;
-    
-//     this.addChild(uiFromXml);
-//   }
-// }
