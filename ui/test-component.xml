@@ -1,4 +1,4 @@
-<StackLayout>
+<StackLayout visibility="{{ isBusy ? 'visible' : 'collapsed' }}">
     <Label text="this is a text shown from XML in the plugin"/>
-    <Label text="{{ lblText }}"/>
+    <Label text="{{ lblText }}" />
 </StackLayout>

@@ -4,7 +4,6 @@ import * as dialogs from 'ui/dialogs';
 var builder = require("ui/builder");
 import LabelModule = require("ui/label");
 
-
 export class Common extends Observable {
   public message: string;
 
@@ -36,38 +35,43 @@ export class Utils {
   }
 }
 
-import { View, AddArrayFromBuilder } from "ui/core/view";
-import { PropertyMetadata } from "ui/core/proxy";
-import { Property, PropertyChangeData, PropertyMetadataSettings } from "ui/core/dependency-observable";
-import { GridLayout } from "ui/layouts/grid-layout";
-import { isAndroid } from "platform";
+// import { View } from "ui/core/view";
+// import { PropertyMetadata } from "ui/core/proxy";
+// import { Property, PropertyChangeData, PropertyMetadataSettings } from "ui/core/dependency-observable";
+// import { GridLayout } from "ui/layouts/grid-layout";
+// import { isAndroid } from "platform";
 
-export module knownCollections {
-  export const items = "items";
-}
-let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
+// let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
 
-const itemsProperty = new Property("items", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout));
-const lblTextProperty = new Property("lblText", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout));
+// const lblTextProperty = new Property("lblText", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout));
+// const isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout));
 
+// export class SlideshowBusyIndicatorControl extends GridLayout {
+//   public static lblTextProperty = lblTextProperty;
+//   public static isBusyProperty = isBusyProperty;
+  
+//   get lblText() {
+//     return this._getValue(SlideshowBusyIndicatorControl.lblTextProperty);
+//   }
 
-export class SlideshowBusyIndicatorControl extends GridLayout {
-  public static lblTextProperty = lblTextProperty;
+//   set lblText(value: string) {
+//     this._setValue(SlideshowBusyIndicatorControl.lblTextProperty, value);
+//   }
 
-  get lblText() {
-    return this._getValue(SlideshowBusyIndicatorControl.lblTextProperty);
-  }
+//   get isBusy() {
+//     return this._getValue(SlideshowBusyIndicatorControl.isBusyProperty);
+//   }
 
-  set lblText(value: string) {
-    this._setValue(SlideshowBusyIndicatorControl.lblTextProperty, value);
-  }
+//   set isBusy(value: boolean) {
+//     this._setValue(SlideshowBusyIndicatorControl.isBusyProperty, value);
+//   }
 
-  constructor() {
-    super();
+//   constructor() {
+//     super();
     
-    const uiFromXml = builder.load(__dirname + "/ui/" + 'test-component.xml');
-    uiFromXml.bindingContext = this;
+//     const uiFromXml = builder.load(__dirname + "/ui/" + 'test-component.xml');
+//     uiFromXml.bindingContext = this;
     
-    this.addChild(uiFromXml);
-  }
-}
+//     this.addChild(uiFromXml);
+//   }
+// }
