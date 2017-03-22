@@ -4,6 +4,9 @@ import { Property, PropertyChangeData, PropertyMetadataSettings, PropertyChanged
 import { isAndroid } from "platform";
 import { BusyIndicatorViewModel } from './test-component-view-model';
 import observableModule = require("data/observable");
+import pages = require("ui/page");
+import viewModule = require("ui/core/view");
+
 var observableObject = new observableModule.Observable();
 
 
@@ -21,9 +24,6 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
   public static lblTextProperty = new Property("lblText", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
   public static isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
   public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
-
-  public static imgSource1Property = new Property("imgSource1", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static imgSource2Property = new Property("imgSource2", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
 
   index = 0;
 
@@ -57,19 +57,22 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
   constructor() {
     super();
 
+    var uiFromXml = builder.load(__dirname + "/" + 'test-component.xml') as viewModule.View;
+    var image1 = uiFromXml.getViewById<viewModule.View>("image1");
+    var image2 = uiFromXml.getViewById<viewModule.View>("image2");
     this.viewModel = new BusyIndicatorViewModel();
     this.viewModel.isBusy = this.isBusy;
     this.viewModel.lblText = this.lblText;
     this.viewModel.images = this.images;
-
-    const uiFromXml = builder.load(__dirname + "/" + 'test-component.xml');
+    this.viewModel.image1 = image1;
+    this.viewModel.image2 = image2;
+    this.viewModel.init();
     uiFromXml.bindingContext = this.viewModel;
 
     this.addChild(uiFromXml);
   }
 
   onPropertyChanged(data: PropertyChangeData) {
-    console.log(data.property.name + " has been changed and the new value is: " + data.newValue);
     this.viewModel.set(data.property.name, data.newValue);
   }
 }

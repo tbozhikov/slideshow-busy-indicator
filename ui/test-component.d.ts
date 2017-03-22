@@ -5,8 +5,6 @@ export declare class SlideshowBusyIndicatorControl extends GridLayout {
     static lblTextProperty: Property;
     static isBusyProperty: Property;
     static imagesProperty: Property;
-    static imgSource1Property: Property;
-    static imgSource2Property: Property;
     index: number;
     stateSwitch: boolean;
     viewModel: BusyIndicatorViewModel;
