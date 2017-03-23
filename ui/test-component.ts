@@ -9,7 +9,6 @@ import viewModule = require("ui/core/view");
 
 var observableObject = new observableModule.Observable();
 
-
 var timer = require("timer");
 var builder = require("ui/builder");
 let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
@@ -21,7 +20,6 @@ function onPropertyChanged(data: PropertyChangeData) {
 }
 
 export class SlideshowBusyIndicatorControl extends GridLayout {
-  public static lblTextProperty = new Property("lblText", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
   public static isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
   public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
 
@@ -29,14 +27,6 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
 
   stateSwitch: boolean;
   viewModel: BusyIndicatorViewModel;
-
-  get lblText() {
-    return this._getValue(SlideshowBusyIndicatorControl.lblTextProperty);
-  }
-
-  set lblText(value: string) {
-    this._setValue(SlideshowBusyIndicatorControl.lblTextProperty, value);
-  }
 
   get isBusy() {
     return this._getValue(SlideshowBusyIndicatorControl.isBusyProperty);
@@ -58,14 +48,12 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     super();
 
     var uiFromXml = builder.load(__dirname + "/" + 'test-component.xml') as viewModule.View;
-    var image1 = uiFromXml.getViewById<viewModule.View>("image1");
-    var image2 = uiFromXml.getViewById<viewModule.View>("image2");
+
     this.viewModel = new BusyIndicatorViewModel();
     this.viewModel.isBusy = this.isBusy;
-    this.viewModel.lblText = this.lblText;
     this.viewModel.images = this.images;
-    this.viewModel.image1 = image1;
-    this.viewModel.image2 = image2;
+    this.viewModel.image1 = uiFromXml.getViewById<viewModule.View>("image1");
+    this.viewModel.image2 = uiFromXml.getViewById<viewModule.View>("image2");
     this.viewModel.init();
     uiFromXml.bindingContext = this.viewModel;
 
