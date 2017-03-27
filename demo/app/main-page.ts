@@ -14,3 +14,4 @@ export function pageLoaded(args: observable.EventData) {
     // var stackLayout = view.getViewById(page, "root")
     // stackLayout.addChild(a);
 }
+

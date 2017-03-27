@@ -6,6 +6,7 @@ import { BusyIndicatorViewModel } from './test-component-view-model';
 import observableModule = require("data/observable");
 import pages = require("ui/page");
 import viewModule = require("ui/core/view");
+import colorModule = require("color");
 
 var observableObject = new observableModule.Observable();
 
@@ -23,10 +24,10 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
   public static isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
   public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
 
-  index = 0;
-
-  stateSwitch: boolean;
-  viewModel: BusyIndicatorViewModel;
+  private index = 0;
+  private root: viewModule.View;
+  private indicator: viewModule.View;
+  private viewModel: BusyIndicatorViewModel;
 
   get isBusy() {
     return this._getValue(SlideshowBusyIndicatorControl.isBusyProperty);
@@ -46,6 +47,8 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
 
   constructor() {
     super();
+    this.style.on("propertyChange", this.onStyleChanged)
+
 
     var uiFromXml = builder.load(__dirname + "/" + 'test-component.xml') as viewModule.View;
 
@@ -55,9 +58,29 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this.viewModel.image1 = uiFromXml.getViewById<viewModule.View>("image1");
     this.viewModel.image2 = uiFromXml.getViewById<viewModule.View>("image2");
     this.viewModel.init();
+
+    this.root = uiFromXml.getViewById<viewModule.View>("root");
+    this.indicator = uiFromXml.getViewById<viewModule.View>("indicator");
+
     uiFromXml.bindingContext = this.viewModel;
 
     this.addChild(uiFromXml);
+  }
+
+  // _createUI() {
+  //   this.root.backgroundColor = this.backgroundColor;
+  //   this.indicator.backgroundColor = this.color;
+  // }
+
+  onStyleChanged(args: any) {
+    switch (args.propertyName) {
+      case "backgroundColor":
+        this.root.backgroundColor = args.value;
+        break;
+      case "color":
+        this.indicator.backgroundColor = args.value;
+        break;
+    }
   }
 
   onPropertyChanged(data: PropertyChangeData) {

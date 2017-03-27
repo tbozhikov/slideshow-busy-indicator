@@ -8,6 +8,7 @@ export declare class BusyIndicatorViewModel extends Observable {
     images: Array<any>;
     image1: viewModule.View;
     image2: viewModule.View;
+    rootColor: undefined;
     private stateSwitch;
     private image1Exit;
     private image2Exit;

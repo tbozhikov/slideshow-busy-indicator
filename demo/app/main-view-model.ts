@@ -20,4 +20,8 @@ export class HelloWorldModel extends Observable {
   onTimeout() {
     this.set("isBusy", !this.isBusy);
   }
+
+  onClick() {
+    this.isBusy = !this.isBusy;
+  }
 }

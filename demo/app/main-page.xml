@@ -3,8 +3,8 @@
  loaded="pageLoaded" class="page">
 
   <StackLayout id="root"  class="p-20">
-    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{images}}" ></indicator:BusyIndicator>
+    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" style="background-color: yellow; color: blue;" ></indicator:BusyIndicator>
     <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button tap="onClick" width="50" height="50" />
   </StackLayout> 
-
 </Page>
