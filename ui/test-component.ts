@@ -3,17 +3,11 @@ import { PropertyMetadata } from "ui/core/proxy";
 import { Property, PropertyChangeData, PropertyMetadataSettings, PropertyChangedCallback } from "ui/core/dependency-observable";
 import { isAndroid } from "platform";
 import { BusyIndicatorViewModel } from './test-component-view-model';
-import observableModule = require("data/observable");
-import pages = require("ui/page");
 import viewModule = require("ui/core/view");
 import colorModule = require("color");
 
-var observableObject = new observableModule.Observable();
-
-var timer = require("timer");
 var builder = require("ui/builder");
 let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
-var TRANSFORM_ANIMATION_DURATION = 600;
 
 function onPropertyChanged(data: PropertyChangeData) {
   let busyIndicator = <SlideshowBusyIndicatorControl>data.object;
