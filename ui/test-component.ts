@@ -25,8 +25,6 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
   public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
 
   private index = 0;
-  private root: viewModule.View;
-  private indicator: viewModule.View;
   private viewModel: BusyIndicatorViewModel;
 
   get isBusy() {
@@ -47,38 +45,31 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
 
   constructor() {
     super();
-    this.style.on("propertyChange", this.onStyleChanged)
 
+    var innerComponent = builder.load(__dirname + "/" + 'test-component.xml') as viewModule.View;
 
-    var uiFromXml = builder.load(__dirname + "/" + 'test-component.xml') as viewModule.View;
-
-    this.viewModel = new BusyIndicatorViewModel();
+    var viewModel = new BusyIndicatorViewModel();
+    this.viewModel = viewModel;
     this.viewModel.isBusy = this.isBusy;
     this.viewModel.images = this.images;
-    this.viewModel.image1 = uiFromXml.getViewById<viewModule.View>("image1");
-    this.viewModel.image2 = uiFromXml.getViewById<viewModule.View>("image2");
+    this.viewModel.image1 = innerComponent.getViewById<viewModule.View>("image1");
+    this.viewModel.image2 = innerComponent.getViewById<viewModule.View>("image2");
     this.viewModel.init();
 
-    this.root = uiFromXml.getViewById<viewModule.View>("root");
-    this.indicator = uiFromXml.getViewById<viewModule.View>("indicator");
+    innerComponent.bindingContext = this.viewModel;
 
-    uiFromXml.bindingContext = this.viewModel;
+    this.style.on("propertyChange", (args) => { this.onStyleChanged(args); })
 
-    this.addChild(uiFromXml);
+    this.addChild(innerComponent);
   }
-
-  // _createUI() {
-  //   this.root.backgroundColor = this.backgroundColor;
-  //   this.indicator.backgroundColor = this.color;
-  // }
 
   onStyleChanged(args: any) {
     switch (args.propertyName) {
       case "backgroundColor":
-        this.root.backgroundColor = args.value;
+        this.viewModel.set("backgroundColor", args.value);
         break;
       case "color":
-        this.indicator.backgroundColor = args.value;
+        this.viewModel.set("color", args.value)
         break;
     }
   }

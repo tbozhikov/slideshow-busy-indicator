@@ -3,6 +3,7 @@ import { SlideshowBusyIndicatorControl } from './test-component'
 import viewModule = require("ui/core/view");
 import animationModule = require("ui/animation");
 import enums = require("ui/enums");
+import colorModule = require("color");
 
 var timer = require("timer");
 var TRANSFORM_ANIMATION_DURATION = 600;
@@ -15,6 +16,8 @@ export class BusyIndicatorViewModel extends Observable {
     public images: Array<any>;
     public image1: viewModule.View;
     public image2: viewModule.View;
+    public backgroundColor: colorModule.Color;
+    public color: colorModule.Color;
 
     public rootColor: undefined;
 
@@ -31,6 +34,9 @@ export class BusyIndicatorViewModel extends Observable {
     constructor() {
         super();
         this.images = [];
+        this.color = new colorModule.Color("green");
+        this.backgroundColor = new colorModule.Color("red");
+
         timer.setInterval(() => this.onSwitchIntervalElapsed(), TRANSFORM_ANIMATION_DURATION + 100);
     }
 

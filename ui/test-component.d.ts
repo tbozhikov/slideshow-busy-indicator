@@ -7,6 +7,7 @@ export declare class SlideshowBusyIndicatorControl extends GridLayout {
     private root;
     private indicator;
     private viewModel;
+    private innerComponent;
     isBusy: boolean;
     images: Array<any>;
     constructor();
