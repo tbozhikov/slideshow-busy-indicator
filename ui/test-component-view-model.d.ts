@@ -9,9 +9,9 @@ export declare class BusyIndicatorViewModel extends Observable {
     images: Array<any>;
     image1: viewModule.View;
     image2: viewModule.View;
-    backgroundColor: colorModule.Color;
-    color: colorModule.Color;
-    rootColor: undefined;
+    backColor: colorModule.Color;
+    indicatorColor: colorModule.Color;
+    backOpacity: any;
     private stateSwitch;
     private image1Exit;
     private image2Exit;

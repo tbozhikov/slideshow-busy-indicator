@@ -23,6 +23,9 @@ function onPropertyChanged(data: PropertyChangeData) {
 export class SlideshowBusyIndicatorControl extends GridLayout {
   public static isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
   public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
+  public static backOpacityProperty = new Property("backOpacity", "SlideshowBusyIndicatorControl", new PropertyMetadata(0.2, AffectsLayout, onPropertyChanged));
+  public static indicatorColorProperty = new Property("indicatorColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static backColorProperty = new Property("backColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
 
   private index = 0;
   private viewModel: BusyIndicatorViewModel;
@@ -43,6 +46,30 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this._setValue(SlideshowBusyIndicatorControl.imagesProperty, value);
   }
 
+  get backOpacity() {
+    return this._getValue(SlideshowBusyIndicatorControl.backOpacityProperty);
+  }
+
+  set backOpacity(value: number) {
+    this._setValue(SlideshowBusyIndicatorControl.backOpacityProperty, value);
+  }
+
+  get backColor() {
+    return this._getValue(SlideshowBusyIndicatorControl.backColorProperty);
+  }
+
+  set backColor(value: colorModule.Color) {
+    this._setValue(SlideshowBusyIndicatorControl.backColorProperty, value);
+  }
+
+  get indicatorColor() {
+    return this._getValue(SlideshowBusyIndicatorControl.indicatorColorProperty);
+  }
+
+  set indicatorColor(value: colorModule.Color) {
+    this._setValue(SlideshowBusyIndicatorControl.indicatorColorProperty, value);
+  }
+
   constructor() {
     super();
 
@@ -54,25 +81,29 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this.viewModel.images = this.images;
     this.viewModel.image1 = innerComponent.getViewById<viewModule.View>("image1");
     this.viewModel.image2 = innerComponent.getViewById<viewModule.View>("image2");
+    this.viewModel.backOpacity = this.backOpacity;
+    this.viewModel.backColor = this.backColor;
+    this.viewModel.indicatorColor = this.indicatorColor;
+
     this.viewModel.init();
 
     innerComponent.bindingContext = this.viewModel;
 
-    this.style.on("propertyChange", (args) => { this.onStyleChanged(args); })
+    // this.style.on("propertyChange", (args) => { this.onStyleChanged(args); })
 
     this.addChild(innerComponent);
   }
 
-  onStyleChanged(args: any) {
-    switch (args.propertyName) {
-      case "backgroundColor":
-        this.viewModel.set("backgroundColor", args.value);
-        break;
-      case "color":
-        this.viewModel.set("color", args.value)
-        break;
-    }
-  }
+  // onStyleChanged(args: any) {
+  //   switch (args.propertyName) {
+  //     case "backgroundColor":
+  //       this.viewModel.set("backgroundColor", args.value);
+  //       break;
+  //     case "color":
+  //       this.viewModel.set("color", args.value)
+  //       break;
+  //   }
+  // }
 
   onPropertyChanged(data: PropertyChangeData) {
     this.viewModel.set(data.property.name, data.newValue);

@@ -22,6 +22,7 @@ export class HelloWorldModel extends Observable {
   }
 
   onClick() {
-    this.isBusy = !this.isBusy;
+    console.log("this.set('isBusy', !this.isBusy);")
+    this.set("isBusy", !this.isBusy);
   }
 }

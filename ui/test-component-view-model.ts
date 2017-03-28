@@ -16,10 +16,9 @@ export class BusyIndicatorViewModel extends Observable {
     public images: Array<any>;
     public image1: viewModule.View;
     public image2: viewModule.View;
-    public backgroundColor: colorModule.Color;
-    public color: colorModule.Color;
-
-    public rootColor: undefined;
+    public backColor: colorModule.Color;
+    public indicatorColor: colorModule.Color;
+    public backOpacity: number;
 
     private stateSwitch: boolean;
     private image1Exit: animationModule.Animation;
@@ -34,8 +33,8 @@ export class BusyIndicatorViewModel extends Observable {
     constructor() {
         super();
         this.images = [];
-        this.color = new colorModule.Color("green");
-        this.backgroundColor = new colorModule.Color("red");
+        this.indicatorColor = new colorModule.Color("red");
+        this.backColor = new colorModule.Color("black");
 
         timer.setInterval(() => this.onSwitchIntervalElapsed(), TRANSFORM_ANIMATION_DURATION + 100);
     }
