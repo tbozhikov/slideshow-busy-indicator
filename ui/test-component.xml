@@ -1,9 +1,11 @@
 <GridLayout visibility="{{ isBusy ? 'visible' : 'collapsed' }}" >
     <GridLayout backgroundColor="{{ backColor }}" opacity="{{ backOpacity }}"></GridLayout>
-    <GridLayout backgroundColor="{{ indicatorColor }}" width="80" height="80" style="margin: 20">
-        <GridLayout width="40" height="40">
-            <Image id="image1" src="{{ imgSource1 }}"></Image>
-            <Image id="image2" src="{{ imgSource2 }}"></Image>
+    <!--<GridLayout backgroundColor="{{ indicatorColor }}" width="80" height="80" style="margin: 20">-->
+        <GridLayout width="80" height="80" margin="20">
+            <GridLayout backgroundColor="{{ indicatorColor }}" opacity="{{ indicatorOpacity }}"></GridLayout>
+
+            <Image id="image1" width="40" height="40" src="{{ imgSource1 }}"></Image>
+            <Image id="image2" width="40" height="40" src="{{ imgSource2 }}"></Image>
         </GridLayout>
-    </GridLayout>
+    <!--</GridLayout>-->
 </GridLayout>

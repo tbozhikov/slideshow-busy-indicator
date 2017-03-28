@@ -24,6 +24,7 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
   public static isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
   public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
   public static backOpacityProperty = new Property("backOpacity", "SlideshowBusyIndicatorControl", new PropertyMetadata(0.2, AffectsLayout, onPropertyChanged));
+  public static indicatorOpacityProperty = new Property("indicatorOpacity", "SlideshowBusyIndicatorControl", new PropertyMetadata(1, AffectsLayout, onPropertyChanged));
   public static indicatorColorProperty = new Property("indicatorColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
   public static backColorProperty = new Property("backColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
 
@@ -70,6 +71,14 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this._setValue(SlideshowBusyIndicatorControl.indicatorColorProperty, value);
   }
 
+  get indicatorOpacity() {
+    return this._getValue(SlideshowBusyIndicatorControl.indicatorOpacityProperty);
+  }
+
+  set indicatorOpacity(value: number) {
+    this._setValue(SlideshowBusyIndicatorControl.indicatorOpacityProperty, value);
+  }
+
   constructor() {
     super();
 
@@ -84,26 +93,14 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this.viewModel.backOpacity = this.backOpacity;
     this.viewModel.backColor = this.backColor;
     this.viewModel.indicatorColor = this.indicatorColor;
+    this.viewModel.indicatorOpacity = this.indicatorOpacity;
 
     this.viewModel.init();
 
     innerComponent.bindingContext = this.viewModel;
 
-    // this.style.on("propertyChange", (args) => { this.onStyleChanged(args); })
-
     this.addChild(innerComponent);
   }
-
-  // onStyleChanged(args: any) {
-  //   switch (args.propertyName) {
-  //     case "backgroundColor":
-  //       this.viewModel.set("backgroundColor", args.value);
-  //       break;
-  //     case "color":
-  //       this.viewModel.set("color", args.value)
-  //       break;
-  //   }
-  // }
 
   onPropertyChanged(data: PropertyChangeData) {
     this.viewModel.set(data.property.name, data.newValue);

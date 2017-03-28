@@ -19,6 +19,7 @@ export class BusyIndicatorViewModel extends Observable {
     public backColor: colorModule.Color;
     public indicatorColor: colorModule.Color;
     public backOpacity: number;
+    public indicatorOpacity: number;
 
     private stateSwitch: boolean;
     private image1Exit: animationModule.Animation;
