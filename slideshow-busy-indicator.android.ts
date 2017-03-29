@@ -1,9 +1,4 @@
-import { Common } from './slideshow-busy-indicator.common';
-import { SlideshowBusyIndicatorControl } from './ui/test-component';
-
-export class SlideshowBusyIndicator extends Common {
-
-}
+import { SlideshowBusyIndicatorControl } from './slideshow-busy-indicator.common';
 
 export class BusyIndicator extends SlideshowBusyIndicatorControl {
 

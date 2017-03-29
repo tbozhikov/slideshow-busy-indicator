@@ -8,7 +8,7 @@
       backOpacity="0.1" 
       indicatorColor="yellow" 
       backColor="pink" 
-      indicatorOpacity="1"></indicator:BusyIndicator>
+      indicatorOpacity="0.5"></indicator:BusyIndicator>
     <StackLayout>
       <Button tap="{{ onClick }}" width="50" height="50" text="change busyness" />
           <Label text="test" class="t-20 text-center c-black" textWrap="true"/>

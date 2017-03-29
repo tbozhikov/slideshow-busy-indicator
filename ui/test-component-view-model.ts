@@ -1,5 +1,4 @@
 import { Observable } from 'data/observable';
-import { SlideshowBusyIndicatorControl } from './test-component'
 import viewModule = require("ui/core/view");
 import animationModule = require("ui/animation");
 import enums = require("ui/enums");
