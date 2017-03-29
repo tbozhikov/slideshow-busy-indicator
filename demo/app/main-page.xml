@@ -2,16 +2,18 @@
       xmlns:indicator="nativescript-slideshow-busy-indicator"
  loaded="pageLoaded" class="page">
 
-  <GridLayout id="root"  class="p-20">
-    <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
+  <GridLayout id="root">
+    <Label verticalAlignment="top" text="Test content" class="t-20 c-black" textWrap="true"/>
     <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
-      backOpacity="0.1" 
-      indicatorColor="yellow" 
+      backOpacity="0.4" 
+      indicatorColor="brown" 
       backColor="pink" 
-      indicatorOpacity="0.5"></indicator:BusyIndicator>
-    <StackLayout>
-      <Button tap="{{ onClick }}" width="50" height="50" text="change busyness" />
-          <Label text="test" class="t-20 text-center c-black" textWrap="true"/>
+      indicatorOpacity="0.8"
+      indicatorBorderRadius="50"
+      indicatorWidth="100"
+      indicatorHeight="100" ></indicator:BusyIndicator>
+    <StackLayout marginTop="50">
+      <Button tap="{{ onClick }}" width="200" height="50" text="toggle" />
     </StackLayout>
   </GridLayout> 
 </Page>

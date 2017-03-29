@@ -21,6 +21,9 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
   public static indicatorOpacityProperty = new Property("indicatorOpacity", "SlideshowBusyIndicatorControl", new PropertyMetadata(1, AffectsLayout, onPropertyChanged));
   public static indicatorColorProperty = new Property("indicatorColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
   public static backColorProperty = new Property("backColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static indicatorHeightProperty = new Property("indicatorHeight", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static indicatorWidthProperty = new Property("indicatorWidth", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static indicatorBorderRadiusProperty = new Property("indicatorBorderRadius", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
 
   private index = 0;
   private viewModel: BusyIndicatorViewModel;
@@ -73,6 +76,30 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this._setValue(SlideshowBusyIndicatorControl.indicatorOpacityProperty, value);
   }
 
+  get indicatorHeight() {
+    return this._getValue(SlideshowBusyIndicatorControl.indicatorHeightProperty);
+  }
+
+  set indicatorHeight(value: number) {
+    this._setValue(SlideshowBusyIndicatorControl.indicatorHeightProperty, value);
+  }
+
+  get indicatorWidth() {
+    return this._getValue(SlideshowBusyIndicatorControl.indicatorWidthProperty);
+  }
+
+  set indicatorWidth(value: number) {
+    this._setValue(SlideshowBusyIndicatorControl.indicatorWidthProperty, value);
+  }
+
+  get indicatorBorderRadius() {
+    return this._getValue(SlideshowBusyIndicatorControl.indicatorBorderRadiusProperty);
+  }
+
+  set indicatorBorderRadius(value: number) {
+    this._setValue(SlideshowBusyIndicatorControl.indicatorBorderRadiusProperty, value);
+  }
+
   constructor() {
     super();
 
@@ -84,10 +111,13 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this.viewModel.images = this.images;
     this.viewModel.image1 = innerComponent.getViewById<viewModule.View>("image1");
     this.viewModel.image2 = innerComponent.getViewById<viewModule.View>("image2");
-    this.viewModel.backOpacity = this.backOpacity;
-    this.viewModel.backColor = this.backColor;
-    this.viewModel.indicatorColor = this.indicatorColor;
-    this.viewModel.indicatorOpacity = this.indicatorOpacity;
+    // this.viewModel.backOpacity = this.backOpacity;
+    // this.viewModel.backColor = this.backColor;
+    // this.viewModel.indicatorColor = this.indicatorColor;
+    // this.viewModel.indicatorOpacity = this.indicatorOpacity;
+    // this.viewModel.indicatorHeight = this.indicatorHeight;
+    // this.viewModel.indicatorWidth = this.indicatorWidth;
+    // this.viewModel.indicatorBorderRadius = this.indicatorBorderRadius;
 
     this.viewModel.init();
 

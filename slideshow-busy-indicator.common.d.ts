@@ -8,6 +8,9 @@ export declare class SlideshowBusyIndicatorControl extends GridLayout {
     static indicatorOpacityProperty: Property;
     static indicatorColorProperty: Property;
     static backColorProperty: Property;
+    static indicatorHeightProperty: Property;
+    static indicatorWidthProperty: Property;
+    static indicatorBorderRadiusProperty: Property;
     private index;
     private viewModel;
     isBusy: boolean;
@@ -16,6 +19,9 @@ export declare class SlideshowBusyIndicatorControl extends GridLayout {
     backColor: colorModule.Color;
     indicatorColor: colorModule.Color;
     indicatorOpacity: number;
+    indicatorHeight: number;
+    indicatorWidth: number;
+    indicatorBorderRadius: number;
     constructor();
     onPropertyChanged(data: PropertyChangeData): void;
 }
