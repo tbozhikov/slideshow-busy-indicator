@@ -7,3 +7,9 @@ scripts/
 *.map
 *.ts
 !*.d.ts
+src/*.gif
+src/*.png
+src/*.log
+src/*.map
+src/*.ts
+!src/*.d.ts

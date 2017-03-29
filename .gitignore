@@ -10,4 +10,7 @@ demo/*.d.ts
 demo/lib
 demo/platforms
 demo/node_modules
-node_modules
+src/node_modules
+src/*.js
+src/*.js.map
+src/*.log
