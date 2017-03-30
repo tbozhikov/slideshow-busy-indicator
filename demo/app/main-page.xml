@@ -4,7 +4,12 @@
 
   <GridLayout id="root">
     <Label verticalAlignment="top" text="{{ message }}" class="t-20 c-black" textWrap="true"/>
-    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" indicatorBorderRadius="20" />
+    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
+      indicatorBorderRadius="20"
+      indicatorColor="red"
+      indicatorOpacity="0.6"
+      backOpacity="0.3"
+      backColor="black" />
     <StackLayout marginTop="50">
       <Button tap="{{ onLoadClick }}" width="200" height="50" text="Load Data" />
     </StackLayout>

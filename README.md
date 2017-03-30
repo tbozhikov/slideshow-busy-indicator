@@ -1,4 +1,3 @@
-
 # Nativescript-slideshow-busy-indicator
 
 This plug-in allows you to easily create a busy indicator like the one illustrated (loader) using a set of images that you provide. What it does is cycle through them with a nice transition.
@@ -33,37 +32,39 @@ indicatorWidth
 indicatorBorderRadius
 
 A few examples:
-
-![Sample Android](screenshots/screencast.gif)
-
-Code samples in order of appearance:
+```
+<indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
+      indicatorWidth="60"
+      indicatorHeight="60"
+      indicatorBorderRadius="30"
+      indicatorColor="red" />|
+```
+outputs the following
+![Sample Android](screenshots/indicator-red.gif)
 
 ```
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
-xmlns:rt="nativescript-rich-textfield">
-  <StackLayout >
-
-    <rt:RichTextField icon="0xf123" height="60" iconColor="red" fieldHintColor="red" fieldPaddingLeft="20" textPaddingLeft="80" fieldPaddingRight="90" fieldBackgroundColor="transparent"/>
-
-    <rt:RichTextField icon="&#xf099;" iconSize="20" iconColor="rgba(240,248,255,1)" fieldHint="Twitter Hint"
-     height="60" style="background-color:rgba(30,144,255,1)" fieldBorderColor="rgba(255,255,255,1)" fieldBottomBorderWidth="2"/>
-
-    <rt:RichTextField icon="&#xf262;" fieldBorderColor="rgba(212,175,55,1)" fieldColor="rgba(138,43,226,1)" fieldHeight="50" height="50" fieldBottomBorderWidth="4"
-     fieldTopBorderWidth="4" iconColor="rgba(138,43,226,0.8)" fieldHintColor="rgba(138,43,226,0.6)" style="background-color:rgba(255,223,0,1);margin-top:10;" />
-
-    <rt:RichTextField icon="&#xf17b;" fieldBorderColor="rgba(124,252,0,1)" fieldHeight="45" height="45" fieldTopBorderWidth="3" iconColor="rgba(173,255,47,1)" 
-     style="background-color:rgba(34,139,34,1);margin-top:10;margin-bottom:10;" fieldColor="rgba(34,139,34,1)" />
-
-     <rt:RichTextField iconSize="15" icon="&#xf028;" iconColor="rgba(1,1,1,1)" style="margin-bottom:10;" fieldBackgroundColor="red" fieldBorderColor="white" fieldBorderWidth="3" 
-      fieldHint="Volume value Hint" fieldHintColor="rgba(1,1,1,0.6)" fieldHeight="45" width="90%" />
-
-    <rt:RichTextField icon="&#xf007;" fieldLeftBorderWidth="8" width="80%" fieldHint="Username" fieldPaddingLeft="34" />
-
-    <rt:RichTextField icon="&#xf13e;" fieldLeftBorderWidth="4" fieldRightBorderWidth="4" width="80%" fieldHint="Password" />
-
-  </StackLayout>
-</Page>
+    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
+      indicatorWidth="90"
+      indicatorHeight="90"
+      indicatorBorderRadius="30"
+      indicatorColor="yellow"
+      backOpacity="0.4"
+      backColor="pink" />
+```  
+outputs the following
+![Sample Android](screenshots/indicator-yellow.gif)
 ```
+    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
+      indicatorWidth="120"
+      indicatorHeight="100"
+      indicatorBorderRadius="20"
+      indicatorColor="red"
+      backOpacity="0.6"
+      backColor="black" />
+```
+outputs the following
+![Sample Android](screenshots/indicator-red-big.gif)
+
 ## API
 
 RichTextField attributes:
