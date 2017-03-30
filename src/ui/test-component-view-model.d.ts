@@ -27,5 +27,6 @@ export declare class BusyIndicatorViewModel extends Observable {
     constructor();
     init(): void;
     createTransitionAnimationForView(view: viewModule.View): animationModule.Animation;
+    restartAnimation(animation: animationModule.Animation): void;
     onSwitchIntervalElapsed(): void;
 }

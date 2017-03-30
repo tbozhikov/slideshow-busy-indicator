@@ -95,22 +95,28 @@ export class BusyIndicatorViewModel extends Observable {
         return new animationModule.Animation(definitions, true);
     }
 
+    restartAnimation(animation: animationModule.Animation) {
+        if (animation.isPlaying) {
+            animation.cancel();
+        }
+        animation.play();
+    }
+
     onSwitchIntervalElapsed() {
         this.index = this.index + 1 < this.images.length ? this.index + 1 : 0;
 
         if (this.stateSwitch) {
             this.set("imgSource2", this.images[this.index]);
 
-            this.image2Enter.play();
-            this.image1Exit.play();
-            this.image1Transition.play();
-
+            this.restartAnimation(this.image2Enter);
+            this.restartAnimation(this.image1Exit);
+            this.restartAnimation(this.image1Transition);
         } else {
             this.set("imgSource1", this.images[this.index]);
 
-            this.image1Enter.play();
-            this.image2Exit.play();
-            this.image2Transition.play();
+            this.restartAnimation(this.image1Enter);
+            this.restartAnimation(this.image2Exit);
+            this.restartAnimation(this.image2Transition);
         }
 
         this.stateSwitch = !this.stateSwitch;
