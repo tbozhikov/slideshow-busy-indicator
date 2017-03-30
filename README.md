@@ -2,6 +2,7 @@
 # Nativescript-slideshow-busy-indicator
 
 This plug-in allows you to easily create a busy indicator like the one illustrated (loader) using a set of images that you provide. What it does is cycle through them with a nice transition.
+
 ![Sample Android](screenshots/screencast.gif)
 
 ## Prerequisites
