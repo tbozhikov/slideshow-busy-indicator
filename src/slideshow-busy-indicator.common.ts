@@ -102,7 +102,6 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
 
   constructor() {
     super();
-
     var innerComponent = builder.load(__dirname + "/ui/" + 'test-component.xml') as viewModule.View;
 
     var viewModel = new BusyIndicatorViewModel();
@@ -111,13 +110,6 @@ export class SlideshowBusyIndicatorControl extends GridLayout {
     this.viewModel.images = this.images;
     this.viewModel.image1 = innerComponent.getViewById<viewModule.View>("image1");
     this.viewModel.image2 = innerComponent.getViewById<viewModule.View>("image2");
-    // this.viewModel.backOpacity = this.backOpacity;
-    // this.viewModel.backColor = this.backColor;
-    // this.viewModel.indicatorColor = this.indicatorColor;
-    // this.viewModel.indicatorOpacity = this.indicatorOpacity;
-    // this.viewModel.indicatorHeight = this.indicatorHeight;
-    // this.viewModel.indicatorWidth = this.indicatorWidth;
-    // this.viewModel.indicatorBorderRadius = this.indicatorBorderRadius;
 
     this.viewModel.init();
 

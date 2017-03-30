@@ -36,7 +36,7 @@ export class BusyIndicatorViewModel extends Observable {
     constructor() {
         super();
         this.images = [];
-        this.indicatorColor = new colorModule.Color("red");
+        this.indicatorColor = new colorModule.Color("gray");
         this.backColor = new colorModule.Color("black");
         this.backOpacity = 0.2;
         this.indicatorOpacity = 1;

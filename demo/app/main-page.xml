@@ -3,17 +3,11 @@
  loaded="pageLoaded" class="page">
 
   <GridLayout id="root">
-    <Label verticalAlignment="top" text="Test content" class="t-20 c-black" textWrap="true"/>
-    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
-      backOpacity="0.4" 
-      indicatorColor="brown" 
-      backColor="pink" 
-      indicatorOpacity="0.8"
-      indicatorBorderRadius="50"
-      indicatorWidth="100"
-      indicatorHeight="100" ></indicator:BusyIndicator>
+    <Label verticalAlignment="top" text="{{ message }}" class="t-20 c-black" textWrap="true"/>
+    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" indicatorBorderRadius="20"
+     ></indicator:BusyIndicator>
     <StackLayout marginTop="50">
-      <Button tap="{{ onClick }}" width="200" height="50" text="toggle" />
+      <Button tap="{{ onLoadClick }}" width="200" height="50" text="Load Data" />
     </StackLayout>
   </GridLayout> 
 </Page>

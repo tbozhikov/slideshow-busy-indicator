@@ -8,11 +8,20 @@ export class MainViewModel extends Observable {
   constructor() {
     super();
 
-    this.message = "Test content";
-    this.isBusy = true;
+    this.message = "Loaded content";
+    this.loadData();
   }
 
-  onClick() {
-    this.set("isBusy", !this.isBusy);
+  loadData() {
+    this.set("isBusy", true);
+    this.set("message", "Loading now...");
+    setTimeout(() => {
+      this.set("message", "Loaded content");
+      this.set("isBusy", false);
+    }, 2500);
+  }
+
+  onLoadClick() {
+    this.loadData()
   }
 }
