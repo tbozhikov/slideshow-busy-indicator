@@ -1,7 +1,7 @@
 import { GridLayout } from "ui/layouts/grid-layout";
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
 import colorModule = require("color");
-export declare class SlideshowBusyIndicatorControl extends GridLayout {
+export declare class BusyIndicator extends GridLayout {
     static isBusyProperty: Property;
     static imagesProperty: Property;
     static backOpacityProperty: Property;

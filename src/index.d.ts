@@ -1,1 +1,1 @@
-export * from "./slideshow-busy-indicator.android";
+export * from "./slideshow-busy-indicator.common";

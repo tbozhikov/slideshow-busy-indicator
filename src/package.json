@@ -1,8 +1,8 @@
 {
   "name": "nativescript-slideshow-busy-indicator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Your awesome NativeScript plugin.",
-  "main": "slideshow-busy-indicator",
+  "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {

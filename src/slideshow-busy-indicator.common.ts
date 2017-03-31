@@ -10,94 +10,94 @@ var builder = require("ui/builder");
 let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
 
 function onPropertyChanged(data: PropertyChangeData) {
-  let busyIndicator = <SlideshowBusyIndicatorControl>data.object;
+  let busyIndicator = <BusyIndicator>data.object;
   busyIndicator.onPropertyChanged(data);
 }
 
-export class SlideshowBusyIndicatorControl extends GridLayout {
-  public static isBusyProperty = new Property("isBusy", "SlideshowBusyIndicatorControl", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
-  public static imagesProperty = new Property("images", "SlideshowBusyIndicatorControl", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
-  public static backOpacityProperty = new Property("backOpacity", "SlideshowBusyIndicatorControl", new PropertyMetadata(0.2, AffectsLayout, onPropertyChanged));
-  public static indicatorOpacityProperty = new Property("indicatorOpacity", "SlideshowBusyIndicatorControl", new PropertyMetadata(1, AffectsLayout, onPropertyChanged));
-  public static indicatorColorProperty = new Property("indicatorColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static backColorProperty = new Property("backColor", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static indicatorHeightProperty = new Property("indicatorHeight", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static indicatorWidthProperty = new Property("indicatorWidth", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static indicatorBorderRadiusProperty = new Property("indicatorBorderRadius", "SlideshowBusyIndicatorControl", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+export class BusyIndicator extends GridLayout {
+  public static isBusyProperty = new Property("isBusy", "BusyIndicator", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
+  public static imagesProperty = new Property("images", "BusyIndicator", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
+  public static backOpacityProperty = new Property("backOpacity", "BusyIndicator", new PropertyMetadata(0.2, AffectsLayout, onPropertyChanged));
+  public static indicatorOpacityProperty = new Property("indicatorOpacity", "BusyIndicator", new PropertyMetadata(1, AffectsLayout, onPropertyChanged));
+  public static indicatorColorProperty = new Property("indicatorColor", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static backColorProperty = new Property("backColor", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static indicatorHeightProperty = new Property("indicatorHeight", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static indicatorWidthProperty = new Property("indicatorWidth", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  public static indicatorBorderRadiusProperty = new Property("indicatorBorderRadius", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
 
   private index = 0;
   private viewModel: BusyIndicatorViewModel;
 
   get isBusy() {
-    return this._getValue(SlideshowBusyIndicatorControl.isBusyProperty);
+    return this._getValue(BusyIndicator.isBusyProperty);
   }
 
   set isBusy(value: boolean) {
-    this._setValue(SlideshowBusyIndicatorControl.isBusyProperty, value);
+    this._setValue(BusyIndicator.isBusyProperty, value);
   }
 
   get images() {
-    return this._getValue(SlideshowBusyIndicatorControl.imagesProperty);
+    return this._getValue(BusyIndicator.imagesProperty);
   }
 
   set images(value: Array<any>) {
-    this._setValue(SlideshowBusyIndicatorControl.imagesProperty, value);
+    this._setValue(BusyIndicator.imagesProperty, value);
   }
 
   get backOpacity() {
-    return this._getValue(SlideshowBusyIndicatorControl.backOpacityProperty);
+    return this._getValue(BusyIndicator.backOpacityProperty);
   }
 
   set backOpacity(value: number) {
-    this._setValue(SlideshowBusyIndicatorControl.backOpacityProperty, value);
+    this._setValue(BusyIndicator.backOpacityProperty, value);
   }
 
   get backColor() {
-    return this._getValue(SlideshowBusyIndicatorControl.backColorProperty);
+    return this._getValue(BusyIndicator.backColorProperty);
   }
 
   set backColor(value: colorModule.Color) {
-    this._setValue(SlideshowBusyIndicatorControl.backColorProperty, value);
+    this._setValue(BusyIndicator.backColorProperty, value);
   }
 
   get indicatorColor() {
-    return this._getValue(SlideshowBusyIndicatorControl.indicatorColorProperty);
+    return this._getValue(BusyIndicator.indicatorColorProperty);
   }
 
   set indicatorColor(value: colorModule.Color) {
-    this._setValue(SlideshowBusyIndicatorControl.indicatorColorProperty, value);
+    this._setValue(BusyIndicator.indicatorColorProperty, value);
   }
 
   get indicatorOpacity() {
-    return this._getValue(SlideshowBusyIndicatorControl.indicatorOpacityProperty);
+    return this._getValue(BusyIndicator.indicatorOpacityProperty);
   }
 
   set indicatorOpacity(value: number) {
-    this._setValue(SlideshowBusyIndicatorControl.indicatorOpacityProperty, value);
+    this._setValue(BusyIndicator.indicatorOpacityProperty, value);
   }
 
   get indicatorHeight() {
-    return this._getValue(SlideshowBusyIndicatorControl.indicatorHeightProperty);
+    return this._getValue(BusyIndicator.indicatorHeightProperty);
   }
 
   set indicatorHeight(value: number) {
-    this._setValue(SlideshowBusyIndicatorControl.indicatorHeightProperty, value);
+    this._setValue(BusyIndicator.indicatorHeightProperty, value);
   }
 
   get indicatorWidth() {
-    return this._getValue(SlideshowBusyIndicatorControl.indicatorWidthProperty);
+    return this._getValue(BusyIndicator.indicatorWidthProperty);
   }
 
   set indicatorWidth(value: number) {
-    this._setValue(SlideshowBusyIndicatorControl.indicatorWidthProperty, value);
+    this._setValue(BusyIndicator.indicatorWidthProperty, value);
   }
 
   get indicatorBorderRadius() {
-    return this._getValue(SlideshowBusyIndicatorControl.indicatorBorderRadiusProperty);
+    return this._getValue(BusyIndicator.indicatorBorderRadiusProperty);
   }
 
   set indicatorBorderRadius(value: number) {
-    this._setValue(SlideshowBusyIndicatorControl.indicatorBorderRadiusProperty, value);
+    this._setValue(BusyIndicator.indicatorBorderRadiusProperty, value);
   }
 
   constructor() {
