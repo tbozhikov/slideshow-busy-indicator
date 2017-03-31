@@ -11,7 +11,7 @@ You need a set of images that will be used to be cycled through. The format can 
 ## Installation
 
 ```
-npm install nativescript-slideshow-busy-indicator
+npm install nativescript-slideshow-busy-indicator --save
 ```
 
 ## Usage
