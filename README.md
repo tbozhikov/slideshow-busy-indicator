@@ -32,38 +32,12 @@ indicatorWidth
 indicatorBorderRadius
 
 A few examples:
-```
-<indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
-      indicatorWidth="60"
-      indicatorHeight="60"
-      indicatorBorderRadius="30"
-      indicatorColor="red" />|
-```
-outputs the following
-![Sample Android](screenshots/indicator-red.gif)
 
-```
-    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
-      indicatorWidth="90"
-      indicatorHeight="90"
-      indicatorBorderRadius="30"
-      indicatorColor="yellow"
-      backOpacity="0.4"
-      backColor="pink" />
-```  
-outputs the following
-![Sample Android](screenshots/indicator-yellow.gif)
-```
-    <indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" 
-      indicatorWidth="120"
-      indicatorHeight="100"
-      indicatorBorderRadius="20"
-      indicatorColor="red"
-      backOpacity="0.6"
-      backColor="black" />
-```
-outputs the following
-![Sample Android](screenshots/indicator-red-big.gif)
+| Code | Output |
+| ------ | ------ |
+<indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" indicatorWidth="60" indicatorHeight="60" indicatorBorderRadius="30" indicatorColor="red" />| ![Sample Android](screenshots/indicator-red.gif)|
+<indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" indicatorWidth="90" indicatorHeight="90" indicatorBorderRadius="30" indicatorColor="yellow" backOpacity="0.4" backColor="pink" /> | ![Sample Android](screenshots/indicator-yellow.gif)
+<indicator:BusyIndicator isBusy="{{ isBusy }}" images="{{ images }}" indicatorWidth="120" indicatorHeight="100" indicatorBorderRadius="20" indicatorColor="red" backOpacity="0.6" backColor="black" /> | ![Sample Android](screenshots/indicator-red-big.gif)
 
 ## API
 
