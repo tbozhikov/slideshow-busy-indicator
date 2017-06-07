@@ -7,9 +7,14 @@
         "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "lib": [
-            "es2016"
-        ],
+        "lib": ["es6", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "./node_modules/tns-core-modules/*",
+                "./node_modules/*"
+            ]
+        },
         "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
@@ -20,12 +25,7 @@
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
-        "typeRoots": [
-            "./node_modules/@types",
-            "./node_modules"
-        ],
-        "types": [
-        ]
+        "types": []
     },
     "exclude": [
         "demo",

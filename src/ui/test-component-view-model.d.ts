@@ -1,7 +1,7 @@
 import { Observable } from 'data/observable';
-import viewModule = require("ui/core/view");
-import animationModule = require("ui/animation");
-import colorModule = require("color");
+import * as viewModule from "ui/core/view";
+import * as animationModule from "ui/animation";
+import * as colorModule from "color";
 export declare class BusyIndicatorViewModel extends Observable {
     imgSource1: string;
     imgSource2: string;
