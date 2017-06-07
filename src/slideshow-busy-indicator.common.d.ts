@@ -4,7 +4,6 @@ import * as colorModule from "color";
 export declare const isBusyProperty: Property<BusyIndicator, boolean>;
 export declare const imagesProperty: Property<BusyIndicator, any[]>;
 export declare const backOpacityProperty: Property<BusyIndicator, number>;
-export declare const backOpacityProperty: Property<BusyIndicator, number>;
 export declare const indicatorOpacityProperty: Property<BusyIndicator, number>;
 export declare const indicatorColorProperty: Property<BusyIndicator, colorModule.Color>;
 export declare const backColorProperty: Property<BusyIndicator, colorModule.Color>;

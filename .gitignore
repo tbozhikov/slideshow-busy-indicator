@@ -14,3 +14,6 @@ src/node_modules
 src/*.js
 src/*.js.map
 src/*.log
+publish/src
+publish/package
+publish/node_modules
