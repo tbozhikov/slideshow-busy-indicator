@@ -1,8 +1,8 @@
 import { Observable } from 'data/observable';
-import viewModule = require("ui/core/view");
-import animationModule = require("ui/animation");
-import enums = require("ui/enums");
-import colorModule = require("color");
+import * as viewModule from "ui/core/view";
+import * as animationModule from "ui/animation";
+import * as enums from "ui/enums";
+import * as colorModule from "color";
 
 var timer = require("timer");
 var TRANSFORM_ANIMATION_DURATION = 600;

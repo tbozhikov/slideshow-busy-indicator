@@ -1,115 +1,42 @@
 import { GridLayout } from "ui/layouts/grid-layout";
-import { PropertyMetadata } from "ui/core/proxy";
-import { Property, PropertyChangeData, PropertyMetadataSettings, PropertyChangedCallback } from "ui/core/dependency-observable";
+import { View, Property, CssProperty, InheritedCssProperty, Style, } from "ui/core/view";
+import { PropertyOptions } from "ui/core/properties";
+import { PropertyChangeData, PropertyMetadataSettings, PropertyChangedCallback } from "ui/core/dependency-observable";
 import { isAndroid } from "platform";
 import { BusyIndicatorViewModel } from './ui/test-component-view-model';
-import viewModule = require("ui/core/view");
-import colorModule = require("color");
+import * as colorModule from "color";
+import * as builder from "ui/builder";
 
-var builder = require("ui/builder");
 let AffectsLayout = isAndroid ? PropertyMetadataSettings.None : PropertyMetadataSettings.AffectsLayout;
 
-function onPropertyChanged(data: PropertyChangeData) {
-  let busyIndicator = <BusyIndicator>data.object;
-  busyIndicator.onPropertyChanged(data);
-}
+export const isBusyProperty = new Property<BusyIndicator, boolean>({ name: "isBusy", defaultValue: false, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("isBusy", newValue) });
+export const imagesProperty = new Property<BusyIndicator, Array<any>>({ name: "images", defaultValue: new Array<any>(), valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("images", newValue) });
+export const backOpacityProperty = new Property<BusyIndicator, number>({ name: "backOpacity", defaultValue: 0.2, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("backOpacity", newValue) });
+export const indicatorOpacityProperty = new Property<BusyIndicator, number>({ name: "indicatorOpacity", defaultValue: 1, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("indicatorOpacity", newValue) });
+export const indicatorColorProperty = new Property<BusyIndicator, colorModule.Color>({ name: "indicatorColor", defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("indicatorColor", newValue) });
+export const backColorProperty = new Property<BusyIndicator, colorModule.Color>({ name: "backColor", defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("backColor", newValue) });
+export const indicatorHeightProperty = new Property<BusyIndicator, number>({ name: "indicatorHeight", defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("indicatorHeight", newValue) });
+export const indicatorWidthProperty = new Property<BusyIndicator, number>({ name: "indicatorWidth", defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("indicatorWidth", newValue) });
+export const indicatorBorderRadiusProperty = new Property<BusyIndicator, number>({ name: "indicatorBorderRadius", defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target.onPropertyChanged("indicatorBorderRadius", newValue) });
 
 export class BusyIndicator extends GridLayout {
-  public static isBusyProperty = new Property("isBusy", "BusyIndicator", new PropertyMetadata(true, AffectsLayout, onPropertyChanged));
-  public static imagesProperty = new Property("images", "BusyIndicator", new PropertyMetadata(new Array<any>(), AffectsLayout, onPropertyChanged));
-  public static backOpacityProperty = new Property("backOpacity", "BusyIndicator", new PropertyMetadata(0.2, AffectsLayout, onPropertyChanged));
-  public static indicatorOpacityProperty = new Property("indicatorOpacity", "BusyIndicator", new PropertyMetadata(1, AffectsLayout, onPropertyChanged));
-  public static indicatorColorProperty = new Property("indicatorColor", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static backColorProperty = new Property("backColor", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static indicatorHeightProperty = new Property("indicatorHeight", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static indicatorWidthProperty = new Property("indicatorWidth", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
-  public static indicatorBorderRadiusProperty = new Property("indicatorBorderRadius", "BusyIndicator", new PropertyMetadata(undefined, AffectsLayout, onPropertyChanged));
+  isBusy: boolean;
+  images: Array<any>;
 
   private index = 0;
   private viewModel: BusyIndicatorViewModel;
 
-  get isBusy() {
-    return this._getValue(BusyIndicator.isBusyProperty);
-  }
-
-  set isBusy(value: boolean) {
-    this._setValue(BusyIndicator.isBusyProperty, value);
-  }
-
-  get images() {
-    return this._getValue(BusyIndicator.imagesProperty);
-  }
-
-  set images(value: Array<any>) {
-    this._setValue(BusyIndicator.imagesProperty, value);
-  }
-
-  get backOpacity() {
-    return this._getValue(BusyIndicator.backOpacityProperty);
-  }
-
-  set backOpacity(value: number) {
-    this._setValue(BusyIndicator.backOpacityProperty, value);
-  }
-
-  get backColor() {
-    return this._getValue(BusyIndicator.backColorProperty);
-  }
-
-  set backColor(value: colorModule.Color) {
-    this._setValue(BusyIndicator.backColorProperty, value);
-  }
-
-  get indicatorColor() {
-    return this._getValue(BusyIndicator.indicatorColorProperty);
-  }
-
-  set indicatorColor(value: colorModule.Color) {
-    this._setValue(BusyIndicator.indicatorColorProperty, value);
-  }
-
-  get indicatorOpacity() {
-    return this._getValue(BusyIndicator.indicatorOpacityProperty);
-  }
-
-  set indicatorOpacity(value: number) {
-    this._setValue(BusyIndicator.indicatorOpacityProperty, value);
-  }
-
-  get indicatorHeight() {
-    return this._getValue(BusyIndicator.indicatorHeightProperty);
-  }
-
-  set indicatorHeight(value: number) {
-    this._setValue(BusyIndicator.indicatorHeightProperty, value);
-  }
-
-  get indicatorWidth() {
-    return this._getValue(BusyIndicator.indicatorWidthProperty);
-  }
-
-  set indicatorWidth(value: number) {
-    this._setValue(BusyIndicator.indicatorWidthProperty, value);
-  }
-
-  get indicatorBorderRadius() {
-    return this._getValue(BusyIndicator.indicatorBorderRadiusProperty);
-  }
-
-  set indicatorBorderRadius(value: number) {
-    this._setValue(BusyIndicator.indicatorBorderRadiusProperty, value);
-  }
-
   constructor() {
     super();
-    var innerComponent = builder.load(__dirname + "/ui/" + 'test-component.xml') as viewModule.View;
+    debugger;
+    var innerComponent = builder.load(__dirname + "/ui/" + 'test-component.xml') as View;
 
     var viewModel = new BusyIndicatorViewModel();
     this.viewModel = viewModel;
     this.viewModel.isBusy = this.isBusy;
     this.viewModel.images = this.images;
-    this.viewModel.image1 = innerComponent.getViewById<viewModule.View>("image1");
-    this.viewModel.image2 = innerComponent.getViewById<viewModule.View>("image2");
+    this.viewModel.image1 = innerComponent.getViewById<View>("image1");
+    this.viewModel.image2 = innerComponent.getViewById<View>("image2");
 
     this.viewModel.init();
 
@@ -118,7 +45,17 @@ export class BusyIndicator extends GridLayout {
     this.addChild(innerComponent);
   }
 
-  onPropertyChanged(data: PropertyChangeData) {
-    this.viewModel.set(data.property.name, data.newValue);
+  onPropertyChanged(propertyName, newValue) {
+    this.viewModel.set(propertyName, newValue);
   }
 }
+
+isBusyProperty.register(BusyIndicator);
+imagesProperty.register(BusyIndicator);
+backOpacityProperty.register(BusyIndicator);
+indicatorOpacityProperty.register(BusyIndicator);
+indicatorColorProperty.register(BusyIndicator);
+backColorProperty.register(BusyIndicator);
+indicatorHeightProperty.register(BusyIndicator);
+indicatorWidthProperty.register(BusyIndicator);
+indicatorBorderRadiusProperty.register(BusyIndicator);
