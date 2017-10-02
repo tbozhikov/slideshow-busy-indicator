@@ -32,7 +32,9 @@
     "NativeScript",
     "JavaScript",
     "Android",
-    "iOS"
+    "iOS",
+    "loading",
+    "loader"
   ],
   "author": {
     "name": "Teodor Bozhikov",
